@@ -1,6 +1,9 @@
 package org.softwaretechnologies;
 
 import org.softwaretechnologies.employee.*;
+import org.softwaretechnologies.employee.Manager;
+import org.softwaretechnologies.employee.Programmer;
+import org.softwaretechnologies.employee.Tester;
 
 public class EmployeeFactory {
 
@@ -17,6 +20,13 @@ public class EmployeeFactory {
 
     public static Employee createEmployee(String name, int baseSalary, EmployeeType type) {
         // TODO: реализуйте вышеуказанную функцию
+        if (type == EmployeeType.Manager) {
+            return new Manager(name, baseSalary);
+        } else if (type == EmployeeType.Programmer) {
+            return new Programmer(name, baseSalary);
+        } else if (type == EmployeeType.Tester) {
+            return new Tester(name, baseSalary);
+        }
 
         return null;
     }
