@@ -1,7 +1,6 @@
 package org.softwaretechnologies;
 
-import org.softwaretechnologies.animals.Animal;
-import org.softwaretechnologies.animals.AnimalType;
+import org.softwaretechnologies.animals.*;
 
 public class AnimalFactory {
 
@@ -15,7 +14,13 @@ public class AnimalFactory {
 
     public static Animal createAnimal(String name, AnimalType type) {
         /* TODO в зависимости от type создайте и верните нужное животное */
-
+        if (type == AnimalType.CAT) {
+            return new Cat(name);
+        } else if (type == AnimalType.DOG) {
+            return new Dog(name);
+        } else if (type == AnimalType.COW) {
+            return new Cow(name);
+        }
         return null;
     }
 }
