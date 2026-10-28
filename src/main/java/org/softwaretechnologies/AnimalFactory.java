@@ -14,13 +14,7 @@ public class AnimalFactory {
 
     public static Animal createAnimal(String name, AnimalType type) {
         /* TODO в зависимости от type создайте и верните нужное животное */
-        if (type == AnimalType.CAT) {
-            return new Cat(name);
-        } else if (type == AnimalType.DOG) {
-            return new Dog(name);
-        } else if (type == AnimalType.COW) {
-            return new Cow(name);
-        }
-        return null;
+        if (type == null) return null;
+        return new Animal(name, type);
     }
 }

@@ -1,10 +1,12 @@
 package org.softwaretechnologies.animals;
 
-public abstract class Animal {
+public class Animal {
     private final String name;
+    private final AnimalType type;
 
-    public Animal(String name) {
+    public Animal(String name, AnimalType type){
         this.name = name;
+        this.type = type;
     }
 
     public String getName() {
@@ -18,5 +20,7 @@ public abstract class Animal {
      * Собака должна издавать звук: "woof"
      * @return Метод должен возвращать строку, соответсвующую издаваемого животным звука.
      */
-    public abstract String sound();
+    public String sound(){
+        return type.getSound();
+    }
 }
