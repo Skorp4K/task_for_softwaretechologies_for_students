@@ -18,6 +18,7 @@ public class EmployeeFactory {
     public static Employee createEmployee(String name, int baseSalary, EmployeeType type) {
         // TODO: реализуйте вышеуказанную функцию
 
-        return type == null ? null : type.create();
+        if (type == null) return null;
+        return new Employee(name, baseSalary, type);
     }
 }

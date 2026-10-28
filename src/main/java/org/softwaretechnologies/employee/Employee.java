@@ -7,16 +7,21 @@ package org.softwaretechnologies.employee;
  * Manager: если месяц четный, то baseSalary, иначе baseSalary/2
  * Programmer: всегда baseSalary
  */
-public abstract class Employee {
+public class Employee {
     protected String name;
     protected int baseSalary;
+    protected EmployeeType type; // Добавили тип
 
-    protected Employee(String name, int baseSalary) {
+    public Employee(String name, int baseSalary, EmployeeType type) {
         this.name = name;
         this.baseSalary = baseSalary;
+        this.type = type;
     }
 
-    public abstract int getMonthSalary(int month);
+    public int getMonthSalary(int month) {
+        // Делегируем расчет самому Enum
+        return type.calculateSalary(baseSalary, month);
+    }
 
     public String getName() {
         return name;

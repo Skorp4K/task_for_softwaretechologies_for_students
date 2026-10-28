@@ -1,5 +1,6 @@
 package org.softwaretechnologies.employee;
-
+import java.time.LocalDate;
+import  java.time.YearMonth;
 /**
  * Тип сотрудника
  */
@@ -9,8 +10,8 @@ public enum EmployeeType {
      */
     Manager {
         @Override
-        public Employee create() {
-            return new org.softwaretechnologies.employee.Manager(null, 20);
+        public int calculateSalary(int baseSalary, int month){
+            return (month % 2 == 0) ? baseSalary : baseSalary / 2;
         }
 
     },
@@ -20,8 +21,8 @@ public enum EmployeeType {
      */
     Programmer{
         @Override
-        public Employee create() {
-            return new org.softwaretechnologies.employee.Programmer(null, 20);
+        public int calculateSalary(int baseSalary, int month){
+            return baseSalary;
         }
     },
     /*
@@ -30,11 +31,11 @@ public enum EmployeeType {
      */
     Tester{
         @Override
-        public Employee create() {
-            return new org.softwaretechnologies.employee.Tester(null, 20);
+        public int calculateSalary(int baseSalary, int month) {
+            int daysInMonth = YearMonth.of(LocalDate.now().getYear(), month).lengthOfMonth();
+            return baseSalary * daysInMonth;
         }
     };
 
-    public abstract Employee create();
-
+    public abstract int calculateSalary(int baseSalary, int month);
 }
